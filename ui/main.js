@@ -28,3 +28,40 @@ $(document).ready(function(){
         }  // End if
     });
 });
+
+
+function myMap1() {
+    var mapCanvas = document.getElementById("map1");
+    var myCenter = new google.maps.LatLng(26.4148245,80.2321313);
+    var mapOptions = {center: myCenter, zoom: 5};
+    var map = new google.maps.Map(mapCanvas,mapOptions);
+    var marker = new google.maps.Marker({
+        position: myCenter,
+        animation: google.maps.Animation.BOUNCE
+    });
+    marker.setMap(map);
+    myMap2();
+    myMap3();
+}
+function myMap2() {
+    var mapCanvas = document.getElementById("map2");
+    var myCenter = new google.maps.LatLng(22.3003506,73.2318564);
+    var mapOptions = {center: myCenter, zoom: 5};
+    var map = new google.maps.Map(mapCanvas,mapOptions);
+    var marker = new google.maps.Marker({
+        position: myCenter,
+        animation: google.maps.Animation.BOUNCE
+    });
+    marker.setMap(map);
+}
+function myMap3() {
+    var mapCanvas = document.getElementById("map3");
+    var myCenter = new google.maps.LatLng(51.508742,-0.120850);
+    var mapOptions = {center: myCenter, zoom: 5};
+    var map = new google.maps.Map(mapCanvas,mapOptions);
+    var marker = new google.maps.Marker({
+        position: myCenter,
+        animation: google.maps.Animation.BOUNCE
+    });
+    marker.setMap(map);
+}
