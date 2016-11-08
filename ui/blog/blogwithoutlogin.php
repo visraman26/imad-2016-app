@@ -14,24 +14,16 @@ require "connect.php"
 
 </head>
 <body>
-<?php
-if(is_null($_SESSION['username']))
-{
-    header("Location: blogwithoutlogin.php");
-}
 
-
-?>
 <div class="container-fluid">
     <div class="row content">
         <div class="col-sm-3 sidenav">
             <h4>Vishal Raman's Blog</h4>
             <ul class="nav nav-pills nav-stacked">
                 <li class="active"><a href="#section1">Home</a></li>
-                <li><form action="submit_comment.php" method="post">
-                        <input type="submit" name="logout" value="logout"/>
-                    </form></li>
-
+                <li><a href="#section2">Friends</a></li>
+                <li><a href="#section3">Family</a></li>
+                <li><a href="#section3">Photos</a></li>
             </ul><br>
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search Blog..">
@@ -61,12 +53,13 @@ if(is_null($_SESSION['username']))
             <hr>
 
             <h4>Leave a Comment:</h4>
-            <form role="form" action="submit_comment.php" method="post">
+            <form role="form" action="../index.php" method="post">
                 <div class="form-group">
-                    <input type="hidden" name="username" value="<?php echo $_SESSION['username']; ?>">
-                    <textarea name="comment_area" value="" class="form-control" rows="3" required></textarea>
+                    <input type="hidden" name="username" value=" " disabled/>
+                    <textarea name="comment_area" value="" class="form-control" rows="3" required disabled></textarea>
                 </div>
-                <input type="submit" value="Comment" name="press_comment" class="btn btn-success"/>
+                <input type="submit" value="Comment" name="press_comment" class="btn btn-success"  data-toggle="tooltip" title="Please Login to comment" data-placement="top"/>
+
             </form>
             <br><br>
 
@@ -95,16 +88,16 @@ if(is_null($_SESSION['username']))
                         $comment=$row['comment'];
                         $time=$row['Ctime'];
 
-                ?>
-                <div class="col-sm-2 text-center">
-                    <img src="../images/my1.jpg" class="img-circle" height="65" width="65" alt="">
-                </div>
-                <div class="col-sm-10">
-                    <h4><?php echo $username ;?> <small><?php echo $time ;?></small></h4>
-                    <p><?php echo $comment ;?></p>
-                    <br>
-                </div>
-                <?php
+                        ?>
+                        <div class="col-sm-2 text-center">
+                            <img src="../images/my1.jpg" class="img-circle" height="65" width="65" alt="">
+                        </div>
+                        <div class="col-sm-10">
+                            <h4><?php echo $username ;?> <small><?php echo $time ;?></small></h4>
+                            <p><?php echo $comment ;?></p>
+                            <br>
+                        </div>
+                        <?php
                     }
 
                 }
@@ -119,6 +112,13 @@ if(is_null($_SESSION['username']))
 <footer class="container-fluid">
     <p>Footer Text</p>
 </footer>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
 
-</body>
+
+    });
+</script>
+
+    </body>
 </html>

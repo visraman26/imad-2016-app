@@ -3,6 +3,7 @@ body {
     line-height: 1.8;
     color: #f5f6f7;
 }
+
 p {font-size: 16px;}
 .margin {margin-bottom: 45px;}
 .bg-1 {
@@ -51,7 +52,11 @@ p {font-size: 16px;}
 .glyphicon.glyphicon-arrow-up {
     font-size: 75px;
 }
-
+.remove
+{
+    all:initial;
+    line-height: inherit;
+}
 /*Styling for blog .php*/
 /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
 .row.content {height: 1500px}
