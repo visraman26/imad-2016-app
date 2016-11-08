@@ -1,67 +1,55 @@
-/**
- * Created by Vishal Raman on 07-Nov-16.
- */
+//counter code
+var button= document.getElementById("counter");
 
-$(document).ready(function(){
-    // Add scrollspy to <body>
-    $('body').scrollspy({target: ".navbar", offset: 50});
+button.onclick=function(){
+    //create a request object
+    var request = new XMLHttpRequest();
+    //capture the response and store it in a variable
+    request.onreadystatechange= function(){
+      if(request.readyState === XMLHttpRequest.DONE){
+          //take new acion
+          if(request.status===200){
+              var counter=request.responseText;
+              var span=document.getElementById('count');
+                span.innerHTML = counter.toString();
+          }
+      }  
+    };
+    request.open('GET','http://deepakgoyal468.imad.hasura-app.io/counter');
+    request.send(null);
+};
 
-    // Add smooth scrolling on all links inside the navbar
-    $("#myNavbar a").on('click', function(event) {
-        // Make sure this.hash has a value before overriding default behavior
-        if (this.hash !== "") {
-            // Prevent default anchor click behavior
-            event.preventDefault();
-
-            // Store hash
-            var hash = this.hash;
-
-            // Using jQuery's animate() method to add smooth page scroll
-            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-            $('html, body').animate({
-                scrollTop: $(hash).offset().top
-            }, 800, function(){
-
-                // Add hash (#) to URL when done scrolling (default click behavior)
-                window.location.hash = hash;
-            });
-        }  // End if
-    });
-});
-
-
-function myMap1() {
-    var mapCanvas = document.getElementById("map1");
-    var myCenter = new google.maps.LatLng(26.4148245,80.2321313);
-    var mapOptions = {center: myCenter, zoom: 5};
-    var map = new google.maps.Map(mapCanvas,mapOptions);
-    var marker = new google.maps.Marker({
-        position: myCenter,
-        animation: google.maps.Animation.BOUNCE
-    });
-    marker.setMap(map);
-    myMap2();
-    myMap3();
-}
-function myMap2() {
-    var mapCanvas = document.getElementById("map2");
-    var myCenter = new google.maps.LatLng(22.3003506,73.2318564);
-    var mapOptions = {center: myCenter, zoom: 5};
-    var map = new google.maps.Map(mapCanvas,mapOptions);
-    var marker = new google.maps.Marker({
-        position: myCenter,
-        animation: google.maps.Animation.BOUNCE
-    });
-    marker.setMap(map);
-}
-function myMap3() {
-    var mapCanvas = document.getElementById("map3");
-    var myCenter = new google.maps.LatLng(51.508742,-0.120850);
-    var mapOptions = {center: myCenter, zoom: 5};
-    var map = new google.maps.Map(mapCanvas,mapOptions);
-    var marker = new google.maps.Marker({
-        position: myCenter,
-        animation: google.maps.Animation.BOUNCE
-    });
-    marker.setMap(map);
-}
+var submit=document.getElementById('submit_btn');
+submit.onclick=function(){
+  //make a request to the server and send the name
+   var request = new XMLHttpRequest();
+    //capture the response and store it in a variable
+    request.onreadystatechange= function(){
+      if(request.readyState === XMLHttpRequest.DONE){
+          //take new acion
+          if(request.status===200){
+             //capture a list of names and render it as a list
+            var names=request.responseText;
+            names=JSON.parse(names);
+            var list='';
+            for(var i=0;i<names.length;i++){
+                list+= '<li>' + names[i] + '</li>';
+             }
+            var ul=document.getElementById('namelist');
+            ul.innerHTML=list; 
+          }
+      }  
+    };
+    var nameInput=document.getElementById('name');
+    var name = nameInput.value;
+    request.open('GET','http://deepakgoyal468.imad.hasura-app.io/submit-name?name=' + name,true);
+    request.send(null);
+  //capture a list of names and render it as a list
+  var names=['name1','name2','name3','name4'];
+  var list='';
+  for(var i=0;i<names.length;i++){
+      list+= '<li>' + names[i] + '</li>';
+  }
+  var ul=document.getElementById('namelist');
+  ul.innerHTML=list;
+};
