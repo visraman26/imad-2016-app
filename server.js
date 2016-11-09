@@ -46,7 +46,7 @@ function createTemplate(data)
     var htmlTemplate=`
         
         ${blog}
-        ${btime}
+        ${btime.toDateString()}
     `
     return htmlTemplate;
 }
