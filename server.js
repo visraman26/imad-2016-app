@@ -67,7 +67,8 @@ app.get('/ui/article.html', function (req, res) {
             res.status(500).send(err.toString());
             
         }else{
-            res.send(JSON.stringify(result.rows[0]));
+            var data=result.rows[0];
+            res.send(JSON.stringify(data));
         }
         
     });
