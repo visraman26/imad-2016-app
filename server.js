@@ -68,7 +68,7 @@ app.get('/ui/article.html', function (req, res) {
             
         }else{
             var data=result.rows[0];
-            res.render('index',{tit:'data'})
+            res.render(data);
         }
         
     });
