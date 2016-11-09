@@ -4,7 +4,14 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
+var pool = require('pg').Pool;
 
+var config = {
+  host: 'localhost:5432',
+  user: 'visraman26',
+  password: 'db-visraman26-47244',
+  database: 'visraman26',
+};
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -25,13 +32,9 @@ app.get('/counter', function (req, res) {
     counter=counter+1;
     res.send(counter.toString());
 });
-var config = {
-  host: 'localhost:5432',
-  user: 'visraman26',
-  password: 'db-visraman26-47244',
-  database: 'visraman26',
-};
-var pool = require('pg').Pool;
+
+
+var pool=new Pool(config)
 
 app.get('/test', function (req, res) {
     pool.query('SELECT * FROM login', function(err,result){
