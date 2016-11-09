@@ -46,6 +46,7 @@ function createTemplate(data)
     var htmlTemplate=`
         
         ${blog}
+        ${btime}
     `
     return htmlTemplate;
 }
