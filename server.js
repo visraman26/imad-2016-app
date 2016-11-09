@@ -39,11 +39,16 @@ app.get('/article-three', function (req, res) {
 
 
 
-var counter=0;
-app.get('/counter', function (req, res) {
-    counter=counter+1;
-    res.send(counter.toString());
-});
+function createTemplate(data)
+{
+    var blog= data.blog;
+    var btime=data.btime;
+    var htmlTemplate=`
+        
+        ${blog}
+    `
+    return htmlTemplate;
+}
 
 
 var pool=new Pool(config);
@@ -68,7 +73,7 @@ app.get('/ui/article.html', function (req, res) {
             
         }else{
             var data=result.rows[0];
-            res.render(data);
+            res.send(createTemplate(data));
         }
         
     });
