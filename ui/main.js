@@ -1,55 +1,18 @@
-//counter code
-var button= document.getElementById("counter");
+console.log('Loaded!');
 
-button.onclick=function(){
-    //create a request object
-    var request = new XMLHttpRequest();
-    //capture the response and store it in a variable
-    request.onreadystatechange= function(){
-      if(request.readyState === XMLHttpRequest.DONE){
-          //take new acion
-          if(request.status===200){
-              var counter=request.responseText;
-              var span=document.getElementById('count');
-                span.innerHTML = counter.toString();
-          }
-      }  
-    };
-    request.open('GET','http://deepakgoyal468.imad.hasura-app.io/counter');
-    request.send(null);
-};
 
-var submit=document.getElementById('submit_btn');
-submit.onclick=function(){
-  //make a request to the server and send the name
-   var request = new XMLHttpRequest();
-    //capture the response and store it in a variable
-    request.onreadystatechange= function(){
-      if(request.readyState === XMLHttpRequest.DONE){
-          //take new acion
-          if(request.status===200){
-             //capture a list of names and render it as a list
-            var names=request.responseText;
-            names=JSON.parse(names);
-            var list='';
-            for(var i=0;i<names.length;i++){
-                list+= '<li>' + names[i] + '</li>';
-             }
-            var ul=document.getElementById('namelist');
-            ul.innerHTML=list; 
-          }
-      }  
-    };
-    var nameInput=document.getElementById('name');
-    var name = nameInput.value;
-    request.open('GET','http://deepakgoyal468.imad.hasura-app.io/submit-name?name=' + name,true);
-    request.send(null);
-  //capture a list of names and render it as a list
-  var names=['name1','name2','name3','name4'];
-  var list='';
-  for(var i=0;i<names.length;i++){
-      list+= '<li>' + names[i] + '</li>';
-  }
-  var ul=document.getElementById('namelist');
-  ul.innerHTML=list;
+var text= document.getElementById("text");
+text.innerHtml="Hi i am anjali";
+
+var madi =document.getElementById("madi");
+
+var leftmargin=0;
+function moveright()
+{
+    leftmargin= leftmargin+5;
+    madi.style.margineleft= leftmargin + 'px';
+}
+
+madi.onclick= function(){
+  var interval =setInterval(moveright,100); 
 };
