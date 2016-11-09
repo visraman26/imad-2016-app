@@ -61,14 +61,14 @@ app.get('/test', function (req, res) {
    
 });
 
-app.get('/ui/article.html', function (req, res) {
+router.get('/', function (req, res) {
     pool.query('SELECT * FROM blogs', function(err,result){
         if(err){
             res.status(500).send(err.toString());
             
         }else{
             var data=result.rows[0];
-            res.send(JSON.stringify(data));
+            res.render('index',{tit:'data'})
         }
         
     });
