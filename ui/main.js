@@ -67,6 +67,22 @@ function myMap3() {
 }
 
 
+function checkPasswordMatch()
+{
+    var password = $("#txtNewPassword").val();
+    var confirmPassword = $("#txtConfirmPassword").val();
+
+    if (password != confirmPassword)
+        $("#divCheckPasswordMatch").html("Passwords do not match!");
+    else
+        $("#divCheckPasswordMatch").html("Passwords match.");
+}
+
+$(document).ready(function ()
+{
+    $("#txtConfirmPassword").keyup(checkPasswordMatch);
+});
+
 var text= document.getElementById("text");
 text.innerHtml="Hi i am anjali";
 
