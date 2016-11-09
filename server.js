@@ -31,7 +31,7 @@ var config = {
   password: 'db-visraman26-47244',
   database: 'visraman26',
 };
-var Pool = require('pg').Pool;
+var pool = require('pg').Pool;
 
 app.get('/test', function (req, res) {
     pool.query('SELECT * FROM login', function(err,result){
