@@ -25,7 +25,26 @@ app.get('/counter', function (req, res) {
     counter=counter+1;
     res.send(counter.toString());
 });
+var config = {
+  host: 'localhost:5432',
+  user: 'visraman26',
+  password: 'db-visraman26-47244',
+  database: 'visraman26',
+};
+var Pool = require('pg').Pool;
 
+app.get('/test', function (req, res) {
+    pool.query('SELECT * FROM login', function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+            
+        }else{
+            res.send(JSON.stringify(result));
+        }
+        
+    });
+   
+});
 
 
 
