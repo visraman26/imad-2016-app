@@ -51,7 +51,7 @@ app.get('/test', function (req, res) {
    
 });
 
-app.get('/article-one', function (req, res) {
+app.get('/article', function (req, res) {
     pool.query('SELECT * FROM blogs', function(err,result){
         if(err){
             res.status(500).send(err.toString());
