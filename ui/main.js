@@ -29,11 +29,7 @@ $(document).ready(function(){
     });
 });
 
-fuction m()
-{
-    var k="ko";
-    return k;
-}
+
 function myMap1() {
     var mapCanvas = document.getElementById("map1");
     var myCenter = new google.maps.LatLng(26.4148245,80.2321313);
