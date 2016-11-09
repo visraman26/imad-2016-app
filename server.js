@@ -61,7 +61,7 @@ app.get('/test', function (req, res) {
    
 });
 
-router.get('/', function (req, res) {
+app.get('/', function (req, res) {
     pool.query('SELECT * FROM blogs', function(err,result){
         if(err){
             res.status(500).send(err.toString());
